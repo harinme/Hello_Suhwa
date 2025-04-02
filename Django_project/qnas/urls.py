@@ -4,5 +4,6 @@ from . import views
 app_name='qnas'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('<int:pk>/', views.detail, name='detail'),
     
 ]

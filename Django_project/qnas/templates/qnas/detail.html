@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static "content.css" %}">
+{% endblock style %}
+
+{% block content %}
+<h1 class="f2">&nbsp; >> Q&A</h1>
+<div class="container f1 box" style="border-collapse: collapse">
+  <table class="full-width-table">
+    <br />
+    <tr class="tr" style="border: solid 1px black; height: 50px">
+      <td
+        class="f1 text-center first-column"
+        style="border: solid 1px black"
+      >
+        <h2>{{qna.pk}}</h2>
+      </td>
+      <td
+        class="f1 second-column text-center"
+        style="border: solid 1px black"
+      >
+        <h2>{{qna.title}}</h2>
+      </td>
+      <td
+        class="f2 third-column text-center"
+        style="border: solid 1px black"
+      >
+        <h2><a href="{% url "qnas:index" %}">X</a></h2>
+      </td>
+    </tr>
+    <tr style="border: solid 1px black; height: 50px">
+      <td colspan="3">
+        <h2 class="f1">&nbsp; &nbsp; 작성자: {{qna.writer}}</h2>
+      </td>
+    </tr>
+    <tr style="border: solid 1px black">
+      <td colspan="3" class="f1" style="height: 500px">
+        <h2>{{qna.content}}</h2>
+      </td>
+    </tr>
+  </table>
+
+  <img class="bottom-right" src="{% static "회의.png" %}" style='padding-left:20px; margin: bottom 0;'/>
+</div style='margin-bottom: 20px ;'>
+{% endblock content %}

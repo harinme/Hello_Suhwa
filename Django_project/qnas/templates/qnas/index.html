@@ -24,7 +24,7 @@
           <td id="no"><h2>{{qna.pk}}</h2></td>
           <td id="title">
             <h2>
-              <a href="#">{{qna.title}}</a>
+              <a href="{% url "qnas:detail" qna.pk%}">{{qna.title}}</a>
             </h2>
           </td>
           <td id="writer"><h2>{{qna.writer}}</h2></td>

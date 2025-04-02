@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static "qna.css" %}">
+{% endblock style %}
+
+
+{% block content %}
+<h1 class="f2">&nbsp; >> Q&A</h1>
+    <br />
+    <div class="container" style="align-items: center">
+      <table class="box">
+        <tr class="f1">
+          <td id="no"><h1>00</h1></td>
+          <td id="title"><h1>제목 : OO 단어를 추가해주세요</h1></td>
+          <td id="writer"><h1>작성자</h1></td>
+        </tr>
+      </table>
+      <table class="box">
+        {% if qnas %}
+        {% for qna in qnas %}
+        <tr class="f1">
+          <td id="no"><h2>{{qna.pk}}</h2></td>
+          <td id="title">
+            <h2>
+              <a href="#">{{qna.title}}</a>
+            </h2>
+          </td>
+          <td id="writer"><h2>{{qna.writer}}</h2></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr class="f1">
+          <td style='width: 1000px; padding-left: 100px;'><h2>아직 작성된 글이 없습니다.</h2></td>
+        </tr>
+        {% endif %}
+      </table>
+      <div class="contain">
+        <div class="bottom-right">
+          <a class="f2" href="{% url "index:index" %}">>> Intro</a>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

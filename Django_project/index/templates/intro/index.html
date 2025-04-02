@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'intro.css' %}">
+<link rel="stylesheet" href="{% static "button.css" %}">
+<script>
+  function closeWindow() {
+    if (confirm("창을 닫으시겠습니까?")) {
+      window.close();
+    }
+  }
+</script>
+{% endblock style %}
+
+
+{% comment %} body {% endcomment %}
+{% block content %}
+<div class="contain">
+  <div class="container">
+    <img src="{% static 'v.gif' %}" alt="브이" width="90" />
+    <h1 class="f3" style="font-size: 90px">수화 맞추기 게임</h1>
+  </div>
+  <div class="contain">
+    <h2 style="font-size: 50px"><a href="#"> Start</a></h2>
+    <h2 style="font-size: 50px"><a href="#"> How To Play</a></h2>
+    <h2 style="font-size: 50px"><a href="#"> Words</a></h2>
+    <h2 style="font-size: 50px"><a href="{% url "qnas:index" %}"> Q&A</a></h2>
+    <h2 style="font-size: 50px">
+      <button onclick="closeWindow()">Exit</button>
+    </h2>
+  </div>
+</div>
+
+{% endblock content %}

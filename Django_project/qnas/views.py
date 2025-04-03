@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Qna
+from .forms import QnaForm
 
 # Create your views here.
 def index(request):
@@ -17,3 +18,16 @@ def detail(request, pk):
         'qna':qna,
     }
     return render(request, 'qnas/detail.html', context)
+
+def create(request):
+    if request.method == 'POST':
+        form = QnaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('qnas:index')
+    else:
+        form = QnaForm()
+    context= {
+        'form':form,
+    }
+    return render(request, 'qnas/create.html', context)

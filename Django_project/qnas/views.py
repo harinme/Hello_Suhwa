@@ -11,8 +11,8 @@ def index(request):
 
     return render(request, 'qnas/index.html', context)
 
-def detail(request, pk):
-    qna = Qna.objects.get(pk=pk)
+def detail(request, qna_pk):
+    qna = Qna.objects.get(pk=qna_pk)
 
     context = {
         'qna':qna,
@@ -31,3 +31,8 @@ def create(request):
         'form':form,
     }
     return render(request, 'qnas/create.html', context)
+
+def delete(request, qna_pk):
+    qna = Qna.objects.get(pk= qna_pk)
+    qna.delete()
+    return redirect('qnas:index')

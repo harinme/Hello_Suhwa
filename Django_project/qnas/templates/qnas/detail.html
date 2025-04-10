@@ -41,7 +41,13 @@
       </td>
     </tr>
   </table>
-
+  <div style='margin-top: 10px; text-align: right;'>
+    <form action="{% url "qnas:delete" qna.pk%}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="삭제" style='font-size: 20px;'>
+    </form>
+  </div>
   <img class="bottom-right" src="{% static "회의.png" %}" style='padding-left:20px; margin: bottom 0;'/>
+
 </div style='margin-bottom: 20px ;'>
 {% endblock content %}

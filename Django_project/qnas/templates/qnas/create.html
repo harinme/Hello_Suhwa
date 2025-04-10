@@ -3,27 +3,38 @@
 {% block style %}
 <link rel="stylesheet" href="{% static "content.css" %}">
 <style>
-  /* form을 감싸는 컨테이너에 패딩과 border 적용 */
+  p {
+    font-family: "Gaegu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 28px;
+  }
+  {% comment %} /* form을 감싸는 컨테이너에 패딩과 border 적용 */ {% endcomment %}
   .form-container {
     position: relative;
     padding: 20px;       /* 내부 패딩 */
     border: 1px solid black;
     margin: 20px;
   }
-  /* 우측 상단의 X 버튼 */
+  {% comment %} /* 우측 상단의 X 버튼 */ {% endcomment %}
   .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 15px;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     color: inherit;
     border: none;
     background: none;
     cursor: pointer;
+    font-family: "Tourney", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
   }
-  /* 작성 버튼을 우측 하단에 배치 */
+  {% comment %} /* 작성 버튼을 우측 하단에 배치 */ {% endcomment %}
   .submit-container {
     text-align: right;
     margin-top: 20px;
@@ -32,17 +43,20 @@
 {% endblock style %}
 
 {% block content %}
+<div class='container'>
 <h1 class="f2">&nbsp; >> Q&A</h1>
-<div class="form-container">
-  <!-- X 버튼: 클릭 시 qnas:index로 이동 -->
-  <a href="{% url "qnas:index" %}" class="close-btn">X</a>
+
+  <div class="form-container">
+    <!-- X 버튼: 클릭 시 qnas:index로 이동 -->
+    <a href="{% url "qnas:index" %}" class="close-btn">X</a>
   
-  <form action="" method="post">
+  <form action="{% url "qnas:create" %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="submit-container">
-      <input type="submit" value="작성">
+      <input type="submit" value="작성" class='f1' style='font-size: 24px;'>
     </div>
   </form>
+</div>
 </div>
 {% endblock content %}
